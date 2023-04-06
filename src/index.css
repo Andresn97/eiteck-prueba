@@ -1,0 +1,9 @@
+
+html, body {
+  font-family: var(--font-family);
+  margin: 1rem;
+}
+
+.h-c {
+  text-align: center;
+}
