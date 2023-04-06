@@ -23,7 +23,7 @@ export const paginationSlice = createSlice({
     },
     onClearPagination: ( state ) => {
       state.pagination = emptyInformation
-    }
+    },
   }
 });
 

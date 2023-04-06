@@ -9,22 +9,24 @@ import { Button } from 'primereact/button';
         
 import { useCharacterStore } from "../hooks/useCharacterStore";
 import { FooterLayout } from "../layouts/FooterLayout";
+import { usePaginationStore } from "../hooks/usePaginationStore";
 
 
 export const HomePage = () => {
 
   const { 
-    characters, 
-    startSetCharacters, 
+    characters,
     startClearCharacters
   } = useCharacterStore();
+  const { startSetGlobalData, startClearPagination } = usePaginationStore();
   const toast = useRef(null);
   const navigate = useNavigate();
 
   useEffect(() => {
-    startSetCharacters( toast );
+    startSetGlobalData( toast );
     return () => {
       startClearCharacters();
+      startClearPagination();
     }
   }, []);
 
