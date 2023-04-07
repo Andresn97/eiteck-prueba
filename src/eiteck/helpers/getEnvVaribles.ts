@@ -1,8 +1,8 @@
 
 export const getEnvVariables = () => {
-  import.meta.env;
+  // import.meta.env;
   
   return {
-    ...import.meta.env
+    VITE_RICK_AND_MORTY_API: import.meta.env.VITE_RICK_AND_MORTY_API,
   }
 } 
