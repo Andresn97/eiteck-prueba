@@ -16,7 +16,6 @@ export const MenuBarLayout = () => {
   const { suggestions, getSuggestions, setSuggestions } = useSearchCharacter();
 
   const searchTerm = (event: AutoCompleteCompleteEvent) => {
-    // if ( !suggestions.length ) setSuggestions( characters.map( item => item.name ) ); 
     if ( !event.query.trim().length ) setSuggestions( characters.map( item => item.name ) );
     if ( event.query.trim().length ) getSuggestions( event.query );    
   }
@@ -24,11 +23,12 @@ export const MenuBarLayout = () => {
   const onSearchCharacter = ( event: FormEvent<HTMLFormElement> ) => {
     event.preventDefault();
     startSetCharacterSearched( term );
-  } 
+  }
+  
 
   const start = <img 
     alt="logo" 
-    src="public/morty.png" 
+    src="../../src/assets/morty.png" 
     height="40" 
     className="mr-2"
   ></img>;
