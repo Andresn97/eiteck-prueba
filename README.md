@@ -21,6 +21,11 @@ Para desplegar este sitio en modo desarrollo seguir los siguientes pasos:
   ~~~
   yarn install 
   ~~~
+* Antes de ejecutar la aplicación crear un archivo environment (.env) y escribir la siguiente variable:
+  ~~~
+  VITE_RICK_AND_MORTY_API=[URL_API] 
+  ~~~
+  Igualando con el enlace correspondiente a la [API](https://rickandmortyapi.com/) de Rick and Morty
 * Para ejecutar la aplicación escribir los siguientes comandos:
   ~~~
   npm start
@@ -31,3 +36,8 @@ Para desplegar este sitio en modo desarrollo seguir los siguientes pasos:
 
 ---
 
+Por último para desplegar la aplicaión ejecutar el siguiente comando:
+~~~
+yarn build 
+~~~
+Ya con el directorio dist en el proyecto se puede desplegar el mismo en un servicio externo o ya sea como repositorio dependiendo del servicio host.
