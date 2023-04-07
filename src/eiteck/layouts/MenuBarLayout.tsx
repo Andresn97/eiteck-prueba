@@ -28,7 +28,7 @@ export const MenuBarLayout = () => {
 
   const start = <img 
     alt="logo" 
-    src="../../src/assets/morty.png" 
+    src="https://icons.iconarchive.com/icons/goodstuff-no-nonsense/free-space/512/rick-icon.png" 
     height="40" 
     className="mr-2"
   ></img>;
