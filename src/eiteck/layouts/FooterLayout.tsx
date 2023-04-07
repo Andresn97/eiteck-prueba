@@ -1,6 +1,11 @@
 
 import { useEffect, useState } from 'react';
-import { Paginator, PaginatorCurrentPageReportOptions, PaginatorPageChangeEvent, PaginatorRowsPerPageDropdownOptions } from 'primereact/paginator';
+import { 
+  Paginator, 
+  PaginatorCurrentPageReportOptions, 
+  PaginatorPageChangeEvent,
+  PaginatorRowsPerPageDropdownOptions 
+} from 'primereact/paginator';
 
 import { usePaginationStore } from '../hooks/usePaginationStore';
 
@@ -10,9 +15,17 @@ export const FooterLayout = () => {
   const {
     pagination,
     startChangePage,
+    startClearPagination
   } = usePaginationStore();
   const [first, setFirst] = useState<number>(0);
   const [page, setPage] = useState<number>(0);
+
+  useEffect(() => {
+  
+    return () => {
+      startClearPagination();
+    }
+  }, []);
 
   const onPageChange = (paginator: PaginatorPageChangeEvent) => {  
     setFirst(paginator.first);
@@ -21,27 +34,31 @@ export const FooterLayout = () => {
       startChangePage( pagination.next || '' );
     }
     if ( page > paginator.page ) {
-      // ( paginator.page !== 0 ) &&
-        startChangePage( pagination.prev || '' );
+      startChangePage( pagination.prev || '' );
     }
     setPage( paginator.page );
   };
 
-  const template3 = {
+  const  paginationTemplate  = {
     layout: 'RowsPerPageDropdown PrevPageLink PageLinks NextPageLink CurrentPageReport',
-    RowsPerPageDropdown: (options: PaginatorRowsPerPageDropdownOptions) => {
-        return (
-            <div className="flex align-items-center">
-            {/* <Tooltip target=".slider>.p-slider-handle" content={`${options.value} / page`} position="top" event="focus" /> */}
-            </div>
-        );
+    RowsPerPageDropdown: (
+      options: PaginatorRowsPerPageDropdownOptions
+    ) => {
+      return (<></>);
     },
-    CurrentPageReport: (options: PaginatorCurrentPageReportOptions) => {
-        return (
-            <span style={{ color: 'var(--text-color)', userSelect: 'none', width: '120px', textAlign: 'center' }}>
-                {options.first} - {options.last} de {options.totalRecords}
-            </span>
-        );
+    CurrentPageReport: (
+      options: PaginatorCurrentPageReportOptions
+    ) => {
+      return (
+        <span style={{ 
+              color: 'var(--text-color)', 
+              userSelect: 'none', 
+              width: '120px', 
+              textAlign: 'center' 
+            }}>
+          {options.first} - {options.last} de {options.totalRecords}
+        </span>
+      );
     }
   };
 
@@ -54,7 +71,7 @@ export const FooterLayout = () => {
           first={first}
           rows={20}
           totalRecords={pagination.count} 
-          template={template3}
+          template={ paginationTemplate }
           onPageChange={ onPageChange } 
         />
       </div>

@@ -5,20 +5,18 @@ import { MenuBarLayout } from "../layouts/MenuBarLayout";
 import { Toast } from 'primereact/toast';
 import { Card } from 'primereact/card';
 import { Button } from 'primereact/button';
-        
-        
-import { useCharacterStore } from "../hooks/useCharacterStore";
+         
 import { FooterLayout } from "../layouts/FooterLayout";
-import { usePaginationStore } from "../hooks/usePaginationStore";
+import { useCharacterStore } from "../hooks/useCharacterStore";
 
 
 export const HomePage = () => {
 
   const { 
     characters,
+    startSetGlobalData,
     startClearCharacters
   } = useCharacterStore();
-  const { startSetGlobalData, startClearPagination } = usePaginationStore();
   const toast = useRef(null);
   const navigate = useNavigate();
 
@@ -26,7 +24,6 @@ export const HomePage = () => {
     startSetGlobalData( toast );
     return () => {
       startClearCharacters();
-      startClearPagination();
     }
   }, []);
 

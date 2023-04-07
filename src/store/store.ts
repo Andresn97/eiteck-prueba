@@ -1,7 +1,7 @@
 
 import { configureStore } from '@reduxjs/toolkit';
 
-import { characterSlice, locationSlice, paginationSlice } from './slices/character';
+import { characterSlice, paginationSlice } from './slices/character';
 
 
 export const store = configureStore({
